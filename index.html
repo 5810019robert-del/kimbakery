@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KIM'S BAKERY | Freshly Baked With Love</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", Arial, sans-serif;
+    }
+
+    body {
+      background: #fffaf5;
+      color: #3d2922;
+    }
+
+    /* NAVBAR */
+    header {
+      background: #fff;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #9b5c3e;
+    }
+
+    .logo span {
+      color: #d99a6c;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4a342b;
+      margin-left: 25px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #c47750;
+    }
+
+    .cart-btn {
+      background: #9b5c3e;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 70px 8%;
+      background:
+        linear-gradient(rgba(255,250,245,0.78), rgba(255,250,245,0.78)),
+        url("https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.1;
+      color: #6f3f2c;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #c47750;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background: #9b5c3e;
+      color: white;
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .shop-btn:hover {
+      background: #6f3f2c;
+      transform: translateY(-2px);
+    }
+
+    /* SECTION */
+    section {
+      padding: 80px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #6f3f2c;
+    }
+
+    .section-title p {
+      margin-top: 10px;
+      color: #80675b;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .category-btn {
+      border: 1px solid #d9b29d;
+      background: white;
+      color: #6f3f2c;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+      background: #9b5c3e;
+      color: white;
+    }
+
+    /* SEARCH */
+    .search-box {
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 1px solid #dec9bd;
+      border-radius: 30px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(80,50,35,0.08);
+      transition: 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 25px rgba(80,50,35,0.15);
+    }
+
+    .product-img {
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      color: #6f3f2c;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      color: #80675b;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 43px;
+    }
+
+    .price {
+      color: #c47750;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .options {
+      margin-bottom: 12px;
+    }
+
+    .options select {
+      width: 100%;
+      padding: 9px;
+      border: 1px solid #dcc7ba;
+      border-radius: 8px;
+      background: #fffaf5;
+    }
+
+    .add-btn {
+      width: 100%;
+      border: none;
+      background: #9b5c3e;
+      color: white;
+      padding: 11px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .add-btn:hover {
+      background: #6f3f2c;
+    }
+
+    /* SPECIAL OFFER */
+    .offer {
+      background: #ead2c2;
+      border-radius: 25px;
+      padding: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .offer h2 {
+      font-size: 38px;
+      color: #6f3f2c;
+      margin-bottom: 10px;
+    }
+
+    .offer p {
+      line-height: 1.7;
+    }
+
+    .offer-img {
+      width: 300px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 25px;
+    }
+
+    .about h2 {
+      font-size: 42px;
+      color: #6f3f2c;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      line-height: 1.9;
+      color: #705a50;
+      margin-bottom: 15px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature {
+      background: white;
+      padding: 35px 25px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(80,50,35,0.07);
+    }
+
+    .feature-icon {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      color: #6f3f2c;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #80675b;
+      line-height: 1.6;
+    }
+
+    /* NEWSLETTER */
+    .newsletter {
+      text-align: center;
+      background: #6f3f2c;
+      color: white;
+      border-radius: 25px;
+      padding: 55px 20px;
+    }
+
+    .newsletter h2 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .newsletter p {
+      margin-bottom: 25px;
+    }
+
+    .newsletter input {
+      padding: 14px 20px;
+      width: 300px;
+      max-width: 80%;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    .newsletter button {
+      padding: 14px 25px;
+      border: none;
+      border-radius: 25px;
+      background: #d99a6c;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #34231d;
+      color: #e9dcd5;
+      padding: 50px 8% 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 30px;
+    }
+
+    footer h3 {
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: #cbb8ae;
+      line-height: 1.8;
+      text-decoration: none;
+    }
+
+    .copyright {
+      border-top: 1px solid #57433a;
+      padding-top: 20px;
+      text-align: center;
+      color: #a99489;
+    }
+
+    /* CART */
+    .cart {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      width: 400px;
+      max-width: 90%;
+      height: 100vh;
+      background: white;
+      z-index: 2000;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+      padding: 25px;
+      transition: 0.4s;
+      overflow-y: auto;
+    }
+
+    .cart.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+
+    .close-cart {
+      border: none;
+      background: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+
+    .cart-item h4 {
+      color: #6f3f2c;
+      margin-bottom: 5px;
+    }
+
+    .cart-item p {
+      color: #80675b;
+      font-size: 14px;
+    }
+
+    .remove-btn {
+      border: none;
+      background: #c95f52;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .cart-total {
+      font-size: 22px;
+      font-weight: bold;
+      color: #6f3f2c;
+      margin: 25px 0;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: #9b5c3e;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      .hero {
+        min-height: 550px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .offer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter button {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <div class="logo">KIM'S <span>BAKERY</span></div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <button class="cart-btn" onclick="toggleCart()">
+      🛒 Cart (<span id="cart-count">0</span>)
+    </button>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Freshly Baked.<br><span>Made With Love.</span></h1>
+
+      <p>
+        Welcome to KIM'S BAKERY — your online destination for
+        delicious cakes, pastries, breads, cookies and handcrafted
+        sweet treats.
+      </p>
+
+      <a href="#menu" class="shop-btn">Shop Our Bakery</a>
+    </div>
+  </section>
+
+
+  <!-- MENU -->
+  <section id="menu">
+
+    <div class="section-title">
+      <h2>Our Fresh Bakes</h2>
+      <p>Choose your favorite treats and customize your order.</p>
+    </div>
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search cakes, cookies, bread..."
+        onkeyup="searchProducts()"
+      >
+    </div>
+
+    <div class="categories">
+      <button class="category-btn active" onclick="filterProducts('all', this)">
+        All
+      </button>
+
+      <button class="category-btn" onclick="filterProducts('cake', this)">
+        🎂 Cakes
+      </button>
+
+      <button class="category-btn" onclick="filterProducts('bread', this)">
+        🍞 Bread
+      </button>
+
+      <button class="category-btn" onclick="filterProducts('pastry', this)">
+        🥐 Pastries
+      </button>
+
+      <button class="category-btn" onclick="filterProducts('cookie', this)">
+        🍪 Cookies
+      </button>
+
+      <button class="category-btn" onclick="filterProducts('drink', this)">
+        ☕ Drinks
+      </button>
+    </div>
+
+
+    <div class="products" id="products">
+
+      <!-- PRODUCT 1 -->
+      <div class="product" data-category="cake" data-name="Chocolate Cake">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍫 Chocolate Cake</h3>
+
+          <p class="description">
+            Rich chocolate sponge with creamy chocolate frosting.
+          </p>
+
+          <div class="price">$24.00</div>
+
+          <div class="options">
+            <select>
+              <option>6 inch</option>
+              <option>8 inch (+$8)</option>
+              <option>10 inch (+$15)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Chocolate Cake', 24)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 2 -->
+      <div class="product" data-category="cake" data-name="Strawberry Cake">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍓 Strawberry Cake</h3>
+
+          <p class="description">
+            Soft vanilla cake with fresh strawberries and cream.
+          </p>
+
+          <div class="price">$27.00</div>
+
+          <div class="options">
+            <select>
+              <option>6 inch</option>
+              <option>8 inch (+$8)</option>
+              <option>10 inch (+$15)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Strawberry Cake', 27)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 3 -->
+      <div class="product" data-category="cake" data-name="Red Velvet Cake">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1586788680434-30d324b2d46f?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>❤️ Red Velvet Cake</h3>
+
+          <p class="description">
+            Classic red velvet layers with smooth cream cheese frosting.
+          </p>
+
+          <div class="price">$29.00</div>
+
+          <div class="options">
+            <select>
+              <option>6 inch</option>
+              <option>8 inch (+$8)</option>
+              <option>10 inch (+$15)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Red Velvet Cake', 29)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 4 -->
+      <div class="product" data-category="bread" data-name="Sourdough Bread">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍞 Sourdough Bread</h3>
+
+          <p class="description">
+            Naturally fermented bread with a crispy golden crust.
+          </p>
+
+          <div class="price">$8.00</div>
+
+          <div class="options">
+            <select>
+              <option>Classic</option>
+              <option>Garlic Herb (+$2)</option>
+              <option>Cheese (+$3)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Sourdough Bread', 8)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 5 -->
+      <div class="product" data-category="pastry" data-name="Croissant">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🥐 Butter Croissant</h3>
+
+          <p class="description">
+            Flaky, buttery and freshly baked every morning.
+          </p>
+
+          <div class="price">$4.00</div>
+
+          <div class="options">
+            <select>
+              <option>Butter</option>
+              <option>Chocolate (+$1)</option>
+              <option>Almond (+$2)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Butter Croissant', 4)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 6 -->
+      <div class="product" data-category="pastry" data-name="Cinnamon Roll">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍥 Cinnamon Roll</h3>
+
+          <p class="description">
+            Soft cinnamon rolls covered with sweet cream glaze.
+          </p>
+
+          <div class="price">$5.00</div>
+
+          <div class="options">
+            <select>
+              <option>Classic</option>
+              <option>Extra Glaze (+$1)</option>
+              <option>Walnut (+$2)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Cinnamon Roll', 5)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 7 -->
+      <div class="product" data-category="cookie" data-name="Chocolate Chip Cookies">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍪 Chocolate Chip Cookies</h3>
+
+          <p class="description">
+            Crispy edges with a soft center and chocolate chips.
+          </p>
+
+          <div class="price">$7.00</div>
+
+          <div class="options">
+            <select>
+              <option>Box of 6</option>
+              <option>Box of 12 (+$5)</option>
+              <option>Box of 24 (+$12)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Chocolate Chip Cookies', 7)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 8 -->
+      <div class="product" data-category="cookie" data-name="Macarons">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🌈 French Macarons</h3>
+
+          <p class="description">
+            Colorful almond cookies with creamy flavored fillings.
+          </p>
+
+          <div class="price">$12.00</div>
+
+          <div class="options">
+            <select>
+              <option>Mixed Flavors</option>
+              <option>Chocolate</option>
+              <option>Strawberry</option>
+              <option>Vanilla</option>
+              <option>Pistachio</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('French Macarons', 12)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 9 -->
+      <div class="product" data-category="pastry" data-name="Blueberry Muffin">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1558303050-99a4f8e7c4c3?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🫐 Blueberry Muffin</h3>
+
+          <p class="description">
+            Moist vanilla muffin filled with fresh blueberries.
+          </p>
+
+          <div class="price">$4.50</div>
+
+          <div class="options">
+            <select>
+              <option>Single</option>
+              <option>Box of 6 (+$20)</option>
+              <option>Box of 12 (+$40)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Blueberry Muffin', 4.5)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 10 -->
+      <div class="product" data-category="bread" data-name="Brioche">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🥖 Golden Brioche</h3>
+
+          <p class="description">
+            Soft, rich and buttery French-style brioche bread.
+          </p>
+
+          <div class="price">$9.00</div>
+
+          <div class="options">
+            <select>
+              <option>Classic</option>
+              <option>Chocolate</option>
+              <option>Raisin</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Golden Brioche', 9)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 11 -->
+      <div class="product" data-category="drink" data-name="Iced Latte">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>☕ Iced Latte</h3>
+
+          <p class="description">
+            Smooth espresso blended with chilled creamy milk.
+          </p>
+
+          <div class="price">$5.00</div>
+
+          <div class="options">
+            <select>
+              <option>Regular</option>
+              <option>Vanilla</option>
+              <option>Caramel</option>
+              <option>Hazelnut</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Iced Latte', 5)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+
+      <!-- PRODUCT 12 -->
+      <div class="product" data-category="drink" data-name="Hot Chocolate">
+        <img class="product-img"
+          src="https://images.unsplash.com/photo-1542990253-0d0f5be5f5f6?auto=format&fit=crop&w=700&q=80">
+
+        <div class="product-info">
+          <h3>🍫 Hot Chocolate</h3>
+
+          <p class="description">
+            Warm chocolate drink topped with fluffy whipped cream.
+          </p>
+
+          <div class="price">$5.50</div>
+
+          <div class="options">
+            <select>
+              <option>Classic</option>
+              <option>Dark Chocolate</option>
+              <option>Marshmallow (+$1)</option>
+            </select>
+          </div>
+
+          <button class="add-btn"
+            onclick="addToCart('Hot Chocolate', 5.5)">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SPECIAL OFFER -->
+  <section>
+    <div class="offer">
+
+      <div>
+        <h2>Weekend Sweet Deal 🍰</h2>
+
+        <p>
+          Buy any two cakes and receive a box of
+          six chocolate chip cookies for free!
+        </p>
+
+        <br>
+
+        <a href="#menu" class="shop-btn">Order Now</a>
+      </div>
+
+      <img
+        class="offer-img"
+        src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=80">
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="about">
+
+      <img
+        src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=80">
+
+      <div>
+        <h2>About KIM'S BAKERY</h2>
+
+        <p>
+          KIM'S BAKERY started with one simple idea:
+          make delicious baked goods that bring people together.
+        </p>
+
+        <p>
+          Every morning, our bakers prepare fresh bread,
+          pastries, cakes and cookies using carefully selected
+          ingredients and traditional baking techniques.
+        </p>
+
+        <p>
+          Whether you're celebrating a birthday, enjoying
+          breakfast or simply craving something sweet,
+          KIM'S BAKERY is here to make your day a little better.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FEATURES -->
+  <section>
+
+    <div class="section-title">
+      <h2>Why Choose KIM'S?</h2>
+      <p>Freshness and quality in every bite.</p>
+    </div>
+
+    <div class="features">
+
+      <div class="feature">
+        <div class="feature-icon">🥖</div>
+        <h3>Fresh Every Day</h3>
+        <p>
+          Our breads and pastries are freshly baked every morning.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">❤️</div>
+        <h3>Made With Love</h3>
+        <p>
+          Every product is carefully prepared with attention to detail.
+        </p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">🚚</div>
+        <h3>Fast Delivery</h3>
+        <p>
+          Get your favorite bakery treats delivered straight to your door.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- NEWSLETTER -->
+  <section id="contact">
+
+    <div class="newsletter">
+
+      <h2>Join Our Sweet Club 🍪</h2>
+
+      <p>
+        Subscribe for new products, special offers and bakery updates.
+      </p>
+
+      <input
+        type="email"
+        id="email"
+        placeholder="Enter your email">
+
+      <button onclick="subscribe()">
+        Subscribe
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-content">
+
+      <div>
+        <h3>KIM'S BAKERY</h3>
+
+        <p>
+          Freshly baked goods made with love.
+          From our oven to your table.
+        </p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+
+        <p><a href="#home">Home</a></p>
+        <p><a href="#menu">Our Menu</a></p>
+        <p><a href="#about">About Us</a></p>
+        <p><a href="#contact">Contact</a></p>
+      </div>
+
+      <div>
+        <h3>Contact</h3>
+
+        <p>📍 123 Bakery Street</p>
+        <p>📞 +1 234 567 890</p>
+        <p>✉️ hello@kimsbakery.com</p>
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 KIM'S BAKERY. All Rights Reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- SHOPPING CART -->
+  <div class="cart" id="cart">
+
+    <div class="cart-header">
+      <h2>🛒 Your Cart</h2>
+
+      <button
+        class="close-cart"
+        onclick="toggleCart()">
+        ×
+      </button>
+    </div>
+
+    <div id="cart-items">
+      <p>Your cart is empty.</p>
+    </div>
+
+    <div class="cart-total">
+      Total: $<span id="cart-total">0.00</span>
+    </div>
+
+    <button
+      class="checkout-btn"
+      onclick="checkout()">
+      Proceed to Checkout
+    </button>
+
+  </div>
+
+
+  <script>
+
+    let cart = [];
+
+    /* ADD PRODUCT */
+    function addToCart(name, price) {
+
+      cart.push({
+        name: name,
+        price: price
+      });
+
+      updateCart();
+
+      document.getElementById("cart").classList.add("open");
+    }
+
+
+    /* UPDATE CART */
+    function updateCart() {
+
+      const cartItems = document.getElementById("cart-items");
+      const cartCount = document.getElementById("cart-count");
+      const cartTotal = document.getElementById("cart-total");
+
+      cartCount.textContent = cart.length;
+
+      if (cart.length === 0) {
+
+        cartItems.innerHTML =
+          "<p>Your cart is empty.</p>";
+
+        cartTotal.textContent = "0.00";
+
+        return;
+      }
+
+      let total = 0;
+
+      cartItems.innerHTML = "";
+
+      cart.forEach((item, index) => {
+
+        total += item.price;
+
+        cartItems.innerHTML += `
+          <div class="cart-item">
+
+            <h4>${item.name}</h4>
+
+            <p>$${item.price.toFixed(2)}</p>
+
+            <button
+              class="remove-btn"
+              onclick="removeItem(${index})">
+              Remove
+            </button>
+
+          </div>
+        `;
+      });
+
+      cartTotal.textContent = total.toFixed(2);
+    }
+
+
+    /* REMOVE ITEM */
+    function removeItem(index) {
+
+      cart.splice(index, 1);
+
+      updateCart();
+    }
+
+
+    /* OPEN / CLOSE CART */
+    function toggleCart() {
+
+      document
+        .getElementById("cart")
+        .classList.toggle("open");
+    }
+
+
+    /* FILTER */
+    function filterProducts(category, button) {
+
+      const products =
+        document.querySelectorAll(".product");
+
+      const buttons =
+        document.querySelectorAll(".category-btn");
+
+      buttons.forEach(btn =>
+        btn.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      products.forEach(product => {
+
+        if (
+          category === "all" ||
+          product.dataset.category === category
+        ) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+
+      });
+    }
+
+
+    /* SEARCH */
+    function searchProducts() {
+
+      const search =
+        document
+          .getElementById("search")
+          .value
+          .toLowerCase();
+
+      const products =
+        document.querySelectorAll(".product");
+
+      products.forEach(product => {
+
+        const name =
+          product.dataset.name.toLowerCase();
+
+        if (name.includes(search)) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+
+      });
+    }
+
+
+    /* NEWSLETTER */
+    function subscribe() {
+
+      const email =
+        document.getElementById("email").value;
+
+      if (email === "") {
+
+        alert("Please enter your email.");
+
+      } else {
+
+        alert(
+          "Thank you for subscribing to KIM'S BAKERY! 🍪"
+        );
+
+        document.getElementById("email").value = "";
+      }
+    }
+
+
+    /* CHECKOUT */
+    function checkout() {
+
+      if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+      }
+
+      alert(
+        "Thank you for your order from KIM'S BAKERY! 🍰\n\n" +
+        "Checkout functionality can be connected to a real payment system."
+      );
+    }
+
+  </script>
+
+</body>
+</html>
